@@ -9,14 +9,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d0d;
-      --surface: #161616;
-      --border: #2a2a2a;
-      --accent: #ff4d4d;
-      --accent2: #ffb347;
-      --text: #e8e8e8;
-      --muted: #666;
-      --green: #39ff88;
+      --bg: #05080f;
+      --surface: #0c1220;
+      --surface2: #0a0f1c;
+      --border: #1e2d4a;
+      --accent: #3b82f6;
+      --accent2: #60efff;
+      --accent3: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #4a6080;
+      --green: #22d3a5;
     }
 
     body {
@@ -27,7 +29,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       position: relative;
     }
 
@@ -40,62 +41,59 @@
         to bottom,
         transparent 0px,
         transparent 3px,
-        rgba(0,0,0,0.08) 3px,
-        rgba(0,0,0,0.08) 4px
+        rgba(0,0,0,0.07) 3px,
+        rgba(0,0,0,0.07) 4px
       );
       pointer-events: none;
       z-index: 100;
     }
 
-    /* Animated grid bg */
     .grid-bg {
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,77,77,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,77,77,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: gridDrift 20s linear infinite;
+        linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      animation: gridDrift 25s linear infinite;
     }
-
     @keyframes gridDrift {
       0% { transform: translate(0, 0); }
-      100% { transform: translate(40px, 40px); }
+      100% { transform: translate(44px, 44px); }
     }
 
     .glow-blob {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.12;
-      animation: blobFloat 8s ease-in-out infinite alternate;
+      filter: blur(100px);
+      opacity: 0.10;
+      animation: blobFloat 10s ease-in-out infinite alternate;
     }
-    .glow-blob.a { width: 500px; height: 500px; background: var(--accent); top: -100px; left: -100px; }
-    .glow-blob.b { width: 400px; height: 400px; background: var(--accent2); bottom: -80px; right: -80px; animation-delay: -4s; }
+    .glow-blob.a { width: 600px; height: 600px; background: var(--accent); top: -150px; left: -150px; }
+    .glow-blob.b { width: 450px; height: 450px; background: var(--accent2); bottom: -100px; right: -80px; animation-delay: -5s; }
+    .glow-blob.c { width: 300px; height: 300px; background: var(--accent3); bottom: 30%; left: 20%; opacity: 0.06; animation-delay: -2s; }
 
     @keyframes blobFloat {
       from { transform: scale(1) translate(0,0); }
-      to   { transform: scale(1.15) translate(20px, 20px); }
+      to   { transform: scale(1.2) translate(15px, 20px); }
     }
 
-    /* Main card */
     .card {
       position: relative;
       z-index: 10;
       border: 1px solid var(--border);
       background: var(--surface);
-      max-width: 640px;
-      width: 90%;
-      padding: 48px 48px 40px;
-      animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+      max-width: 660px;
+      width: 92%;
+      padding: 44px 48px 40px;
+      box-shadow: 0 0 60px rgba(59,130,246,0.07), 0 30px 60px rgba(0,0,0,0.4);
+      animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-
     @keyframes cardIn {
-      from { opacity: 0; transform: translateY(32px) scale(0.97); }
+      from { opacity: 0; transform: translateY(36px) scale(0.97); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* Top bar */
     .top-bar {
       display: flex;
       align-items: center;
@@ -113,73 +111,144 @@
       letter-spacing: 0.08em;
     }
 
-    /* Error code */
     .error-code {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(80px, 18vw, 140px);
+      font-size: clamp(80px, 18vw, 130px);
       line-height: 1;
       color: transparent;
       -webkit-text-stroke: 2px var(--accent);
       position: relative;
       display: inline-block;
-      animation: glitch 4s infinite;
+      animation: glitch 5s infinite;
+      text-shadow: 0 0 40px rgba(59,130,246,0.2);
     }
-
     @keyframes glitch {
-      0%, 90%, 100% { text-shadow: none; transform: translate(0,0); }
-      91% { text-shadow: -3px 0 var(--green); transform: translate(3px, 0); }
-      93% { text-shadow: 3px 0 var(--accent2); transform: translate(-3px, 0); }
-      95% { text-shadow: -3px 0 var(--green); transform: translate(0, 2px); }
-      97% { text-shadow: none; transform: translate(0,0); }
+      0%, 88%, 100% { text-shadow: 0 0 40px rgba(59,130,246,0.2); transform: translate(0,0); }
+      89% { text-shadow: -3px 0 var(--accent2); transform: translate(3px, 0); }
+      91% { text-shadow: 3px 0 var(--accent3); transform: translate(-3px, 0); }
+      93% { text-shadow: -2px 0 var(--accent2); transform: translate(0, 2px); }
+      95% { text-shadow: 0 0 40px rgba(59,130,246,0.2); transform: translate(0,0); }
     }
 
     .headline {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(22px, 5vw, 30px);
+      font-size: clamp(20px, 5vw, 28px);
       color: var(--accent2);
-      margin-top: 12px;
+      margin-top: 10px;
       margin-bottom: 20px;
       line-height: 1.3;
     }
 
-    .divider {
+    .log-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      font-size: 12px;
+      line-height: 2;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .log-block .label { color: var(--accent); }
+    .log-block .val   { color: var(--text); }
+    .log-block .ok    { color: var(--green); }
+    .log-block .warn  { color: var(--accent3); }
+
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 15px;
+      background: var(--accent);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .message {
+      font-size: 13px;
+      line-height: 1.9;
+      color: #6a88aa;
+      margin-bottom: 24px;
+    }
+    .message strong { color: var(--text); }
+
+    hr.divider {
       border: none;
       border-top: 1px solid var(--border);
       margin: 24px 0;
     }
 
-    .log-block {
-      background: #0a0a0a;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 16px 20px;
-      font-size: 12px;
-      line-height: 1.9;
-      color: var(--muted);
+    /* Domain for sale block */
+    .forsale {
+      background: linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(59,130,246,0.07) 100%);
+      border: 1px solid rgba(245,158,11,0.25);
+      padding: 20px 24px;
       margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
     }
-    .log-block .label { color: var(--accent); }
-    .log-block .val   { color: var(--text); }
-    .log-block .ok    { color: var(--green); }
-
-    .message {
-      font-size: 14px;
+    .forsale::before {
+      content: '💰';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 36px;
+      opacity: 0.15;
+    }
+    .forsale-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--accent3);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .forsale-text {
+      font-size: 13px;
+      color: #8aa0be;
       line-height: 1.8;
-      color: #999;
-      margin-bottom: 32px;
     }
-    .message strong { color: var(--text); }
+    .forsale-text strong { color: var(--text); }
+    .forsale-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      background: rgba(96,239,255,0.08);
+      border: 1px solid rgba(96,239,255,0.3);
+      padding: 10px 16px;
+      color: var(--accent2);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      letter-spacing: 0.03em;
+    }
+    .forsale-link:hover {
+      background: rgba(96,239,255,0.15);
+      border-color: var(--accent2);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(96,239,255,0.25);
+    }
+    .forsale-link svg {
+      width: 15px; height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
 
-    /* Buttons */
     .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 22px;
+      padding: 11px 20px;
       font-family: 'Space Mono', monospace;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       text-decoration: none;
       border: 1px solid;
@@ -193,9 +262,9 @@
       color: #fff;
     }
     .btn-primary:hover {
-      background: #ff2929;
-      border-color: #ff2929;
-      box-shadow: 0 0 20px rgba(255,77,77,0.4);
+      background: #2563eb;
+      border-color: #2563eb;
+      box-shadow: 0 0 20px rgba(59,130,246,0.4);
       transform: translateY(-1px);
     }
     .btn-ghost {
@@ -208,35 +277,19 @@
       color: var(--text);
     }
 
-    /* Blink cursor */
-    .cursor {
-      display: inline-block;
-      width: 9px; height: 16px;
-      background: var(--accent);
-      margin-left: 3px;
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    /* Footer */
     .footer {
-      margin-top: 36px;
+      margin-top: 32px;
       font-size: 11px;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      padding-top: 20px;
+      padding-top: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
     }
-    .footer .status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .status { display: flex; align-items: center; gap: 6px; }
     .status-dot {
       width: 7px; height: 7px;
       background: var(--green);
@@ -246,19 +299,17 @@
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      50% { opacity: 0.3; }
     }
 
-    /* shaking emoji */
     .shake {
       display: inline-block;
-      animation: shake 2.5s ease-in-out infinite;
-      transform-origin: center;
+      animation: shake 3s ease-in-out infinite;
     }
     @keyframes shake {
       0%, 100% { transform: rotate(0deg); }
-      10% { transform: rotate(-10deg); }
-      20% { transform: rotate(10deg); }
+      10% { transform: rotate(-12deg); }
+      20% { transform: rotate(12deg); }
       30% { transform: rotate(-8deg); }
       40% { transform: rotate(8deg); }
       50% { transform: rotate(0deg); }
@@ -270,6 +321,7 @@
   <div class="grid-bg"></div>
   <div class="glow-blob a"></div>
   <div class="glow-blob b"></div>
+  <div class="glow-blob c"></div>
 
   <div class="card">
     <div class="top-bar">
@@ -287,31 +339,37 @@
 
     <div class="log-block">
       <span class="label">[ERROR]</span> <span class="val">Host not found. Did you just make that up?</span><br>
-      <span class="label">[WARN] </span> <span class="val">Proxy looked everywhere. Like, <em>everywhere</em>.</span><br>
-      <span class="label">[INFO] </span> <span class="ok">Server itself is fine, thanks for asking.</span><br>
-      <span class="label">[INFO] </span> <span class="val">Your spelling, however... no comment.</span>
+      <span class="label">[WARN] </span> <span class="warn">Nothing is proxied here. Absolutely nothing.</span><br>
+      <span class="label">[INFO] </span> <span class="ok">Server is alive and well. It's just lonely.</span><br>
+      <span class="label">[INFO] </span> <span class="val">Suggestion: try an address that actually exists.</span>
       <span class="cursor"></span>
     </div>
 
     <p class="message">
-      The page you're looking for <strong>does not exist</strong>, never existed,
-      or has quietly retired to a beach somewhere without leaving a forwarding address.<br><br>
-      Maybe try another URL? Or just stare at this screen — that usually helps.
+      The page you're after <strong>doesn't live here</strong> — it may never have existed,
+      or it packed its bags and left without a forwarding address.<br><br>
+      Maybe double-check that URL? Or just hit back and pretend this never happened.
     </p>
+
+    <hr class="divider" />
+
+    <div class="forsale">
+      <div class="forsale-label">// Alternatively...</div>
+      <div class="forsale-text">
+        Interested in this domain? <strong>It might be available.</strong><br>
+        If you'd like to make an offer or just have a chat about it, feel free to reach out:
+      </div>
+      <a class="forsale-link" href="mailto:joshuasf83@gmail.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        joshuasf83@gmail.com
+      </a>
+    </div>
 
     <div class="actions">
       <a class="btn btn-primary" href="javascript:history.back()">← Go Back</a>
-      <a class="btn btn-ghost" href="/">🏠 Home (if it exists)</a>
+      <a class="btn btn-ghost" href="/">🏠 Try Home</a>
     </div>
 
     <div class="footer">
       <span>Powered by Nginx Proxy Manager</span>
       <span class="status">
-        <span class="status-dot"></span>
-        Server operational · You, however, are lost
-      </span>
-    </div>
-  </div>
-
-</body>
-</html>
