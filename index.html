@@ -29,10 +29,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       position: relative;
     }
 
-    /* Scanline overlay */
     body::before {
       content: '';
       position: fixed;
@@ -85,7 +85,7 @@
       background: var(--surface);
       max-width: 660px;
       width: 92%;
-      padding: 44px 48px 40px;
+      padding: 28px 36px 28px;
       box-shadow: 0 0 60px rgba(59,130,246,0.07), 0 30px 60px rgba(0,0,0,0.4);
       animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
@@ -98,7 +98,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 36px;
+      margin-bottom: 20px;
     }
     .dot { width: 12px; height: 12px; border-radius: 50%; }
     .dot.r { background: #ff5f57; }
@@ -113,7 +113,7 @@
 
     .error-code {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(80px, 18vw, 130px);
+      font-size: clamp(60px, 14vw, 100px);
       line-height: 1;
       color: transparent;
       -webkit-text-stroke: 2px var(--accent);
@@ -132,10 +132,10 @@
 
     .headline {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(20px, 5vw, 28px);
+      font-size: clamp(18px, 4vw, 24px);
       color: var(--accent2);
-      margin-top: 10px;
-      margin-bottom: 20px;
+      margin-top: 6px;
+      margin-bottom: 14px;
       line-height: 1.3;
     }
 
@@ -143,11 +143,11 @@
       background: var(--surface2);
       border: 1px solid var(--border);
       border-left: 3px solid var(--accent);
-      padding: 16px 20px;
+      padding: 12px 16px;
       font-size: 12px;
-      line-height: 2;
+      line-height: 1.8;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
     .log-block .label { color: var(--accent); }
     .log-block .val   { color: var(--text); }
@@ -166,78 +166,82 @@
 
     .message {
       font-size: 13px;
-      line-height: 1.9;
+      line-height: 1.7;
       color: #6a88aa;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
     .message strong { color: var(--text); }
 
     hr.divider {
       border: none;
       border-top: 1px solid var(--border);
-      margin: 24px 0;
+      margin: 16px 0;
     }
 
-    /* Domain for sale block */
-    .forsale {
-      background: linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(59,130,246,0.07) 100%);
-      border: 1px solid rgba(245,158,11,0.25);
-      padding: 20px 24px;
-      margin-bottom: 28px;
+    /* IT Helpdesk block */
+    .helpdesk {
+      background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(34,211,165,0.05) 100%);
+      border: 1px solid rgba(59,130,246,0.2);
+      padding: 14px 18px;
+      margin-bottom: 20px;
       position: relative;
       overflow: hidden;
     }
-    .forsale::before {
-      content: '💰';
+    .helpdesk::before {
+      content: '🖥️';
       position: absolute;
       right: 20px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 36px;
-      opacity: 0.15;
+      opacity: 0.12;
     }
-    .forsale-label {
+    .helpdesk-label {
       font-size: 10px;
       letter-spacing: 0.15em;
-      color: var(--accent3);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .forsale-text {
-      font-size: 13px;
-      color: #8aa0be;
-      line-height: 1.8;
-    }
-    .forsale-text strong { color: var(--text); }
-    .forsale-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      background: rgba(96,239,255,0.08);
-      border: 1px solid rgba(96,239,255,0.3);
-      padding: 10px 16px;
       color: var(--accent2);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .helpdesk-title {
       font-size: 13px;
       font-weight: 700;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 10px;
     }
-    .forsale-link:hover {
-      background: rgba(96,239,255,0.15);
-      border-color: var(--accent2);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(96,239,255,0.25);
+    .helpdesk-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .forsale-link svg {
-      width: 15px; height: 15px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
+    .helpdesk-items li {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 14px;
+      position: relative;
+    }
+    .helpdesk-items li::before {
+      content: '//';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+    }
+    .helpdesk-items li span {
+      color: #6a88aa;
+    }
+    .helpdesk-disclaimer {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      font-style: italic;
+    }
+    .helpdesk-disclaimer strong {
+      color: var(--accent3);
+      font-style: normal;
     }
 
     .actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -278,11 +282,11 @@
     }
 
     .footer {
-      margin-top: 32px;
+      margin-top: 20px;
       font-size: 11px;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      padding-top: 18px;
+      padding-top: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -353,16 +357,19 @@
 
     <hr class="divider" />
 
-    <div class="forsale">
-      <div class="forsale-label">// Alternatively...</div>
-      <div class="forsale-text">
-        Interested in this domain? <strong>It might be available.</strong><br>
-        If you'd like to make an offer or just have a chat about it, feel free to reach out:
+    <div class="helpdesk">
+      <div class="helpdesk-label">// IT Helpdesk</div>
+      <div class="helpdesk-title">Need assistance? Here are your options:</div>
+      <ul class="helpdesk-items">
+        <li><span>Call us</span> — We're on a call. Always. Indefinitely.</li>
+        <li><span>Submit a ticket</span> — Expected response time: 1–2 business decades.</li>
+        <li><span>Ask a colleague</span> — Honestly, your best bet. Good luck.</li>
+        <li><span>Restart your computer</span> — We were going to suggest this anyway.</li>
+        <li><span>Stare at the screen</span> — Sometimes it just fixes itself. Probably.</li>
+      </ul>
+      <div class="helpdesk-disclaimer">
+        <strong>Disclaimer:</strong> IT accepts no responsibility for URLs typed in anger, bookmarks from 2019, or links forwarded by Dave from accounting.
       </div>
-      <a class="forsale-link" href="mailto:joshuasf83@gmail.com">
-        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        joshuasf83@gmail.com
-      </a>
     </div>
 
     <div class="actions">
@@ -373,4 +380,11 @@
     <div class="footer">
       <span>Powered by Nginx Proxy Manager</span>
       <span class="status">
+        <span class="status-dot"></span>
+        Server operational · You, however, are lost
+      </span>
+    </div>
+  </div>
 
+</body>
+</html>
